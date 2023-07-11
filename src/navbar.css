@@ -1,0 +1,53 @@
+.Tab-bar{
+    margin:10px;
+    width:100%;
+    height: auto;
+    display: flex;
+    gap:50px;
+    background: #f8c4c4;
+}
+.title{
+    color: #000;
+    font-family: "Kristen ITC";
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin:5px;
+    padding: 10px;
+    text-align: center;
+}
+.unselected-tab{
+    width: fit-content;
+    height: 80px;
+    font: italic 1em Georgia, serif;
+    font-style:normal;
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 67px;
+    color: #000;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top:3px;
+    text-align: center;
+
+}
+.unselected-tab:hover{
+    background: #9f9c98;
+}
+.selected-tab{
+    width: fit-content;
+    height: 80px;
+    font: italic 1em Georgia, serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 67px;
+    color: #000000;
+    border-radius: 0px 0px 15px 15px;
+    background-image: linear-gradient(to right,#FF0053 0%,#FF0053 30%,#FFEFF4 30%,#FFEFF4 100%);
+    padding-left: 50px;
+    padding-right: 10px;
+    padding-top:3px;
+    text-align: center;
+}
