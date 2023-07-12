@@ -1,0 +1,50 @@
+.Search-box {
+    width: 560px;
+    height: 564px;
+    flex-shrink: 0;
+    border-radius: 15px;
+    background: #FFF;
+    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25), -1px -1px 4px 0px rgba(0, 0, 0, 0.25);
+    margin-left: 100px;
+
+}
+.top-tab{
+    display: flex;
+}
+.Search-box .selected-div{
+    display: flex;
+    margin:10px;
+    border-radius: 30px;
+    background: #E7E7E7;
+    padding: 2px 7px 2px 7px;
+}
+.Search-box .unselected-div{
+    display: flex;
+    margin:10px;
+    padding: 2px 7px 2px 7px;
+}
+.Search-box .ticker{
+    margin: 8px 5px 5px;
+    width: 15px;
+    height: 15px;
+}
+.Search-box .selected-tab{
+    color: #000;
+    font-family: Apple, sans-serif;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding:0px;
+    margin-top:6px;
+}
+.Search-box .unselected-tab{
+    color: #6A6A6A;
+    font-family: Apple, sans-serif;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding:0px;
+    margin-top:6px;
+}

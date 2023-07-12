@@ -1,4 +1,4 @@
-.Tab-bar{
+.Navbar{
     margin:10px;
     width:100%;
     height: auto;
@@ -6,7 +6,7 @@
     gap:50px;
     background: #f8c4c4;
 }
-.title{
+.Navbar .title{
     color: #000;
     font-family: "Kristen ITC";
     font-size: 40px;
@@ -17,7 +17,7 @@
     padding: 10px;
     text-align: center;
 }
-.unselected-tab{
+.Navbar .unselected-tab{
     width: fit-content;
     height: 80px;
     font: italic 1em Georgia, serif;
@@ -32,10 +32,10 @@
     text-align: center;
 
 }
-.unselected-tab:hover{
+.Navbar .unselected-tab:hover{
     background: #9f9c98;
 }
-.selected-tab{
+.Navbar .selected-tab{
     width: fit-content;
     height: 80px;
     font: italic 1em Georgia, serif;

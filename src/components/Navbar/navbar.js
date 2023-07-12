@@ -13,10 +13,10 @@ export default class Navbar extends React.Component{
     {
         return(
             <div>
-                <div className="Tab-bar">
+                <div className="Navbar">
                     <div className="title">MetroPlan</div>
-                    <div className={this.state.tabIndex==1?"selected-tab":"unselected-tab"} id="home" onClick={()=>this.changestate(1)}>Home</div>
-                    <div className={this.state.tabIndex==2?"selected-tab":"unselected-tab"} id="help"onClick={()=>this.changestate(2)}>Help</div>
+                    <div className={this.state.tabIndex===1?"selected-tab":"unselected-tab"} id="home" onClick={()=>this.changestate(1)}>Home</div>
+                    <div className={this.state.tabIndex===2?"selected-tab":"unselected-tab"} id="help"onClick={()=>this.changestate(2)}>Help</div>
                 </div>
             </div>
         )
