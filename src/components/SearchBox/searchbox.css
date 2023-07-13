@@ -6,6 +6,7 @@
     background: #FFF;
     box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25), -1px -1px 4px 0px rgba(0, 0, 0, 0.25);
     margin-left: 100px;
+    margin-right: 50px;
 
 }
 .top-tab{
@@ -47,4 +48,7 @@
     line-height: normal;
     padding:0px;
     margin-top:6px;
+}
+.Search-box #datepick{
+    margin:20px;
 }
