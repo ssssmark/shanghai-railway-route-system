@@ -1,6 +1,8 @@
 import React from "react";
 import "./searchbox.css"
-import {DatePicker} from "antd";
+import {Cascader} from "antd";
+import Selectbox from "../Selectbox/Selectbox.js"
+import stations from "../../data/stations.json"
 export default class Searchbox extends React.Component{
     state={
         tabindex:1,
@@ -25,8 +27,8 @@ export default class Searchbox extends React.Component{
                     </div>
 
                 </div>
-
-
+            <div className="input_station"></div>
+                <Selectbox/>
             </div>
         )
    }
