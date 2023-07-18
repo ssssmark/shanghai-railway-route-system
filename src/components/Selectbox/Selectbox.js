@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import stationname from "../../data/Station-name";
 import {AutoComplete} from "antd";
 import './Selectbox.css'
@@ -15,39 +15,58 @@ export default class Selectbox extends React.Component{
     }
     onSelect = (data) => {
         console.log('onSelect', data);
-        this.setState({input_value:data})
     };
-    handlechange=(e)=>{
-        this.setState({input_value:e.target.value})
+    onChange=(data)=>{
+        console.log('onchange', data);
+        this.setState({input_value:data})
     }
-   handleSearch = (value: string) => {
-        let res: { label: string }[] = [];
-        if (!value || value.indexOf('@') >= 0) {
-            res = [];
-        } else {
-            res = ['gmail.com', '163.com', 'qq.com'].map((domain) => ({
-                value,
-            }));
+   onSearch = (value: string) => {
+        //从options中间找有没有包含value的,有就返回搜索结果,没有不返回
+       this.state={
+           input_value:' ',
+           options:stationname.map((station)=>({
+               label: station.value,
+               value: station.value
+           }))
+       }
+        console.log('onSearch:', value);
+        //遍历options,找到包含value的
+        let result = [];
+        for (let i = 0; i < this.state.options.length; i++) {
+            if (this.state.options[i].value.includes(value)) {
+                result.push(this.state.options[i]);
+            }
         }
-        this.setState({options:res})
+        //显示options中result的结果
+        this.setState({
+            options: result
+        })
+
+
     };
     render()
     {
         return(
-            <AutoComplete
-                className="Selectbox"
-                options={this.state.options}
-                value={this.state.input_value}
-                // filterOption={(input) =>{
-                //     return (
-                //      this.state.options.filter(obj=>obj.value.include(input))
-                //     );}}
-                placeholder="input here"
-                allowClear={true}
-                          style={{ width: 300 }}
-                          backfill={true}
-                          onSelect={this.onSelect}
-            />
+            <div>
+                <AutoComplete
+                    className="Selectbox"
+                    value={this.state.input_value}
+                    // filterOption={(input) =>{
+                    //     return (
+                    //      this.state.options.filter(obj=>obj.value.include(input))
+                    //     );}}
+                    placeholder="input here: default is lby 卷王"
+                    allowClear={true}
+                    style={{ width: 300 }}
+                    backfill={true}
+                    onSelect={this.onSelect}
+                    onChange={this.onChange}
+                    onSearch={this.onSearch}
+                    options={this.state.options}
+                />
+            </div>
+
+
         )
     }
 }
