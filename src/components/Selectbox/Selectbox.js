@@ -38,10 +38,10 @@ export default class Selectbox extends React.Component{
                 className="Selectbox"
                 options={this.state.options}
                 value={this.state.input_value}
-                filterOption={(input) =>{
-                    return (
-                     this.state.options.filter(obj=>obj.value.include(input))
-                    );}}
+                // filterOption={(input) =>{
+                //     return (
+                //      this.state.options.filter(obj=>obj.value.include(input))
+                //     );}}
                 placeholder="input here"
                 allowClear={true}
                           style={{ width: 300 }}
