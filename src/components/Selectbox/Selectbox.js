@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import stationname from "../../data/Station-name";
 import {AutoComplete} from "antd";
 import './Selectbox.css'
@@ -51,18 +51,14 @@ export default class Selectbox extends React.Component{
                 <AutoComplete
                     className="Selectbox"
                     value={this.state.input_value}
-                    // filterOption={(input) =>{
-                    //     return (
-                    //      this.state.options.filter(obj=>obj.value.include(input))
-                    //     );}}
-                    placeholder="input here: default is lby 卷王"
-                    allowClear={true}
-                    style={{ width: 300 }}
+                    placeholder="input here"
+                    style={{ width: 200}}
                     backfill={true}
                     onSelect={this.onSelect}
                     onChange={this.onChange}
                     onSearch={this.onSearch}
                     options={this.state.options}
+                    autoFocus={true}
                 />
             </div>
 
