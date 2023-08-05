@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React  from "react";
 import stationname from "../../data/Station-name";
 import {AutoComplete} from "antd";
 import './Selectbox.css'
@@ -6,7 +6,7 @@ export default class Selectbox extends React.Component{
     constructor(props) {
         super(props);
         this.state={
-            input_value:' ',
+            input_value:'',
             options:stationname.map((station)=>({
                 label: station.value,
                 value: station.value
@@ -15,6 +15,12 @@ export default class Selectbox extends React.Component{
     }
     onSelect = (data) => {
         console.log('onSelect', data);
+        this.setState({
+            options:stationname.map((station)=>({
+                label: station.value,
+                value: station.value
+            }))
+        })
     };
     onChange=(data)=>{
         console.log('onchange', data);
@@ -23,7 +29,6 @@ export default class Selectbox extends React.Component{
    onSearch = (value: string) => {
         //从options中间找有没有包含value的,有就返回搜索结果,没有不返回
        this.state={
-           input_value:' ',
            options:stationname.map((station)=>({
                label: station.value,
                value: station.value
