@@ -28,7 +28,15 @@ export default class Searchbox extends React.Component{
 
                 </div>
             <div className="input_station"></div>
-                <Selectbox/>
+                <div className="inputdiv">
+                    <div className="from-to">From</div>
+                    <Selectbox />
+                </div>
+                <div className="inputdiv">
+                    <div className="from-to">To</div>
+                    <Selectbox className="destination"/>
+                </div>
+
             </div>
         )
    }

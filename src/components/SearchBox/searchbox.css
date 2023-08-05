@@ -1,9 +1,9 @@
 .Search-box {
     width: 30%;
-    height: 500px;
+    height: 400px;
     flex-shrink: 0;
     border-radius: 15px;
-    background: #FFF;
+    background:  #FFFCFC;
     box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25), -1px -1px 4px 0px rgba(0, 0, 0, 0.25);
     margin-left: 100px;
     margin-right: 50px;
@@ -50,4 +50,16 @@
 }
 .Search-box #datepick{
     margin:20px;
+}
+.Search-box .from-to{
+    color: #D30450;
+    font-family: Gabriola, sans-serif;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-align: center;
+}
+.Search-box .inputdiv{
+    margin-top:20px;
 }
