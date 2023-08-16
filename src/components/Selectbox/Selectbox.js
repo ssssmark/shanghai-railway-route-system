@@ -60,7 +60,7 @@ export default class Selectbox extends React.Component{
                     //     return (
                     //      this.state.options.filter(obj=>obj.value.include(input))
                     //     );}}
-                    placeholder="input here: default is lby 卷王"
+                    placeholder="input here: default is None"
                     allowClear={true}
                     style={{ width: 300 }}
                     backfill={true}
