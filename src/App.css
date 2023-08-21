@@ -1,3 +1,11 @@
 .background{
   background-image: url("res/img/background.png")
 }
+.svg {
+  font-size: 12px;
+  width: 1500px;
+  position: absolute;
+  transform: translateX(-600px) translateY(-300px);
+  left: 1100px;
+  top:170px;
+}

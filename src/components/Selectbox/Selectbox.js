@@ -56,11 +56,7 @@ export default class Selectbox extends React.Component{
                 <AutoComplete
                     className="Selectbox"
                     value={this.state.input_value}
-                    // filterOption={(input) =>{
-                    //     return (
-                    //      this.state.options.filter(obj=>obj.value.include(input))
-                    //     );}}
-                    placeholder="input here: default is lby 卷王"
+                    placeholder="Select station"
                     allowClear={true}
                     style={{ width: 300 }}
                     backfill={true}

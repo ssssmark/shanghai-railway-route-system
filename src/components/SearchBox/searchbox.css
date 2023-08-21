@@ -1,11 +1,11 @@
 .Search-box {
-    width: 30%;
-    height: 400px;
+    width: 500px;
+    height: 800px;
     flex-shrink: 0;
     border-radius: 15px;
     background:  #FFFCFC;
     box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25), -1px -1px 4px 0px rgba(0, 0, 0, 0.25);
-    margin-left: 100px;
+    margin-left: 50px;
     margin-right: 50px;
 }
 .top-tab{
@@ -62,4 +62,19 @@
 }
 .Search-box .inputdiv{
     margin-top:20px;
+}
+.Search-box .title{
+    color: #000;
+    font-family: "Kristen ITC";
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin:5px;
+    padding: 10px;
+    text-align: center;
+}
+.Search-box .button{
+    text-align: center;
+    margin: 10px;
 }

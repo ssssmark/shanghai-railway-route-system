@@ -16,11 +16,3 @@ code {
 .Home{
   display: flex;
 }
-.svg {
-  font-size: 12px;
-  width: 1000px;
-  position: absolute;
-  transform: translateX(-600px) translateY(-300px);
-  left: 1200px;
-  top:300px;
-}
