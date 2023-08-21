@@ -1,5 +1,8 @@
 import stations from "./data/stations.json"
 import transfers from "./data/transfers.json"
+var transfer_id=[
+
+]
 var n=stations.length+transfers.length
 class Station{
     cx: 0
@@ -7,6 +10,7 @@ class Station{
     id: ""
     statid:""
     istransfer:false
+    no:0
 }
 
 let allStation=[]
@@ -56,15 +60,22 @@ for (let i=0;i<n-1;i++)
         continue
     }
     else{
-        if(allStation[i].statid.length===3)
+        if(allStation[i].statid.length===4)
         {
-            if(allStation[i].statid.slice(0,2)===allStation[i+1].statid.slice(0,2)&&(Number(allStation[i+1].statid[2])-Number(allStation[i].statid[2]))===1)
+            if(allStation[i].statid.slice(0,2)===allStation[i+1].statid.slice(0,2)&&(Number(allStation[i+1].statid.slice(2,4))-Number(allStation[i].statid.slice(2,4)))===1)
             {
                 console.log(allStation[i],allStation[i+1])
                 adjMatrix[i][i+1]=1
             }
         }
-        /*else if(allStation[i].statid.length===4)*/
+        else if(allStation[i].statid.length===3)
+        {
+            if(allStation[i].statid.slice(0,1)===allStation[i+1].statid.slice(0,1)&&(Number(allStation[i+1].statid.slice(1,3))-Number(allStation[i].statid.slice(1,3)))===1)
+            {
+                console.log(allStation[i],allStation[i+1])
+                adjMatrix[i][i+1]=1
+            }
+        }
     }
 }
 export default allStation

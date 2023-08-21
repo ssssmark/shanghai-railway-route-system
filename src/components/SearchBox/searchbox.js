@@ -1,6 +1,5 @@
 import React from "react";
 import "./searchbox.css"
-import {Cascader} from "antd";
 import Selectbox from "../Selectbox/Selectbox.js"
 import stations from "../../data/stations.json"
 import {Button} from "@mui/material";
