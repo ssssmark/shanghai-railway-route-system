@@ -3,6 +3,17 @@ import stations from '../../data/stations.json'
 import transfers from '../../data/transfers.json'
 import transferPath from '../../res/img/transfer.png'
 export  default  class Station extends React.Component{
+    getAttVal(attributes, attrName) {
+        if (attributes[attrName]) {
+            if (attrName === 'cx' || attrName === 'cy') {
+                return attributes[attrName];
+            } else {
+                return attributes[attrName].value;
+            }
+        } else {
+            return null;
+        }
+    }
     convertShow(e) {
         const stationInfos = require('../../data/stationInfo.json');
         const attributes = e.target.attributes;

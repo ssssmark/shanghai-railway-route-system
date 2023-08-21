@@ -1,5 +1,6 @@
-.Selectbox {
-    margin-left: 10%;
+.Selectbox{
+    margin: 0px;
+    position: relative;
+    left:100px;
     border: #0b0b0b;
-    width: 40%;
 }

@@ -3,6 +3,8 @@ import "./searchbox.css"
 import {Cascader} from "antd";
 import Selectbox from "../Selectbox/Selectbox.js"
 import stations from "../../data/stations.json"
+import {Button} from "@mui/material";
+import allStation from "../../algorithm";
 export default class Searchbox extends React.Component{
     state={
         tabindex:1,
@@ -14,8 +16,10 @@ export default class Searchbox extends React.Component{
     }
     render()
     {
+        console.log(allStation)
         return(
             <div className="Search-box">
+                <div className="title">MetroPlan</div>
                 <div className="top-tab">
                     <div className={this.state.tabindex===1?"selected-div": "unselected-div"} onClick={()=>this.changetab(1)}>
                         <img src={this.state.tabindex===1?require('../../res/icon/selected-tick.png'):require('../../res/icon/unselected-tick.png')} className="ticker" alt='ticker'/>
@@ -36,9 +40,15 @@ export default class Searchbox extends React.Component{
                     <div className="from-to">To</div>
                     <Selectbox className="destination"/>
                 </div>
-                <div className="inputdiv">
-                   <button className="button">Search</button>
+                <div className="button">
+                    <Button variant="contained"
+                            color="primary"
+                            className="button"
+                    >
+                        Search
+                    </Button>
                 </div>
+
 
             </div>
         )
