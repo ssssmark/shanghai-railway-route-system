@@ -10,7 +10,7 @@ class Station{
     id: ""
     statid:""
     istransfer:false
-    no:0
+    statarr:[]
 }
 
 let allStation=[]
@@ -31,6 +31,7 @@ for(let i=0;i<transfers.length;i++)
     S.cy=transfers[i].y
     S.statid=transfers[i].statid
     S.id=transfers[i]["data-id"]
+    S.statarr=transfers[i].statarr
     S.istransfer=true
     allStation.push(S)
 }
@@ -76,6 +77,16 @@ for (let i=0;i<n-1;i++)
                 adjMatrix[i][i+1]=1
             }
         }
+    }
+    if(allStation[i].istransfer===true)
+    {
+        let index=allStation[i].statarr.indexOf(allStation[i].statid)
+        console.log(allStation[i])
+        if(index+1<allStation[i].statarr.length)
+        {
+            allStation[i].statid=allStation[i].statarr[index+1]
+        }
+        console.log(allStation[i])
     }
 }
 export default allStation
