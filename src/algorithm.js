@@ -1,8 +1,5 @@
 import stations from "./data/stations.json"
 import transfers from "./data/transfers.json"
-var transfer_id=[
-
-]
 var n=stations.length+transfers.length
 class Station{
     cx: 0
@@ -13,7 +10,7 @@ class Station{
     statarr:[]
 }
 
-let allStation=[]
+export let allStation=[]
 for(let i=0;i<stations.length;i++)
 {
     let S=new Station()
@@ -49,9 +46,9 @@ for(let i=0;i<allStation.length;i++)
     }
 }
 //创建邻接矩阵
-const adjMatrix = [];
+export const adjMatrix = [];
 for (let i = 0; i < n; i++) {
-    adjMatrix.push(new Array(n).fill(null));
+    adjMatrix.push(new Array(n).fill(0));
 }
 //先处理普通站点，每一站和下一站有边
 for (let i=0;i<n-1;i++)
@@ -65,7 +62,6 @@ for (let i=0;i<n-1;i++)
         {
             if(allStation[i].statid.slice(0,2)===allStation[i+1].statid.slice(0,2)&&(Number(allStation[i+1].statid.slice(2,4))-Number(allStation[i].statid.slice(2,4)))===1)
             {
-                console.log(allStation[i],allStation[i+1])
                 adjMatrix[i][i+1]=1
             }
         }
@@ -73,20 +69,38 @@ for (let i=0;i<n-1;i++)
         {
             if(allStation[i].statid.slice(0,1)===allStation[i+1].statid.slice(0,1)&&(Number(allStation[i+1].statid.slice(1,3))-Number(allStation[i].statid.slice(1,3)))===1)
             {
-                console.log(allStation[i],allStation[i+1])
                 adjMatrix[i][i+1]=1
             }
         }
     }
+    //对换乘站建完边就按顺序更换其id
     if(allStation[i].istransfer===true)
     {
         let index=allStation[i].statarr.indexOf(allStation[i].statid)
-        console.log(allStation[i])
+
         if(index+1<allStation[i].statarr.length)
         {
             allStation[i].statid=allStation[i].statarr[index+1]
+
+            //改序号之后需要重新排序
+            for(let i=0;i<allStation.length;i++)
+            {
+                for(let j=i;j<allStation.length;j++)
+                {
+                    if(Number(allStation[j].statid)<Number(allStation[i].statid))
+                    {
+                        let temp=allStation[j]
+                        allStation[j]=allStation[i]
+                        allStation[i]=temp
+                    }
+                }
+            }
         }
-        console.log(allStation[i])
     }
 }
-export default allStation
+export default {
+    adjMatrix,
+    allStation
+};
+
+

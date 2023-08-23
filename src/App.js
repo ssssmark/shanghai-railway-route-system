@@ -9,7 +9,8 @@ function App() {
   return (
     <div className="App" >
         <div >
-            <div className="Home"><Searchbox/>
+            <div className="Home">
+                <Searchbox/>
                 <div>
                     <svg className="svg" viewBox="200 200 3000 3000"  >
                         <Line/>
