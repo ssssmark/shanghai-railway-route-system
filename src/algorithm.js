@@ -53,50 +53,38 @@ for (let i = 0; i < n; i++) {
 //先处理普通站点，每一站和下一站有边
 for (let i=0;i<n-1;i++)
 {
-    if(allStation[i].statid.length!==allStation[i+1].statid.length)
+    for(let j=0;j<n-1;j++)
     {
-        continue
-    }
-    else{
-        if(allStation[i].statid.length===4)
+        if (allStation[i].statid.length !== allStation[j].statid.length)
         {
-            if(allStation[i].statid.slice(0,2)===allStation[i+1].statid.slice(0,2)&&(Number(allStation[i+1].statid.slice(2,4))-Number(allStation[i].statid.slice(2,4)))===1)
-            {
-                adjMatrix[i][i+1]=1
-            }
+            continue
         }
-        else if(allStation[i].statid.length===3)
-        {
-            if(allStation[i].statid.slice(0,1)===allStation[i+1].statid.slice(0,1)&&(Number(allStation[i+1].statid.slice(1,3))-Number(allStation[i].statid.slice(1,3)))===1)
-            {
-                adjMatrix[i][i+1]=1
-            }
-        }
-    }
-    //对换乘站建完边就按顺序更换其id
-    if(allStation[i].istransfer===true)
-    {
-        let index=allStation[i].statarr.indexOf(allStation[i].statid)
-
-        if(index+1<allStation[i].statarr.length)
-        {
-            allStation[i].statid=allStation[i].statarr[index+1]
-
-            //改序号之后需要重新排序
-            for(let i=0;i<allStation.length;i++)
-            {
-                for(let j=i;j<allStation.length;j++)
-                {
-                    if(Number(allStation[j].statid)<Number(allStation[i].statid))
-                    {
-                        let temp=allStation[j]
-                        allStation[j]=allStation[i]
-                        allStation[i]=temp
-                    }
+        else {
+            if (allStation[i].statid.length === 4) {
+                if (allStation[i].statid.slice(0, 2) === allStation[j].statid.slice(0, 2) && (Number(allStation[j].statid.slice(2, 4)) - Number(allStation[i].statid.slice(2, 4))) === 1) {
+                    adjMatrix[i][j] = 1
+                    adjMatrix[j][i] = 1
+                }
+            } else if (allStation[i].statid.length === 3) {
+                if (allStation[i].statid.slice(0, 1) === allStation[j].statid.slice(0, 1) && (Number(allStation[j].statid.slice(1, 3)) - Number(allStation[i].statid.slice(1, 3))) === 1) {
+                    adjMatrix[i][j] = 1
+                    adjMatrix[j][i] = 1
                 }
             }
         }
     }
+        //对换乘站建完边就按顺序更换其id
+        if(allStation[i].istransfer===true)
+        {
+            let index=allStation[i].statarr.indexOf(allStation[i].statid)
+
+            if(index+1<allStation[i].statarr.length)
+            {
+                allStation[i].statid=allStation[i].statarr[index+1]
+            }
+        }
+
+
 }
 export default {
     adjMatrix,

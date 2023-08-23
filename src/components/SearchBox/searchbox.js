@@ -26,62 +26,59 @@ export default class Searchbox extends React.Component{
             destination:val
         })
     }
-    dijkstra(adjMatrix, i, j) {
-        let dist = [];
-        let prev = [];
-
-        for (let i = 0; i < adjMatrix.length; i++) {
-            dist[i] = Number.MAX_VALUE;
-            prev[i] = -1;
-        }
-
-        dist[i] = 0;
-
-        let S = new Set();
-
-        while (S.size < adjMatrix.length) {
-            let minDist = Number.MAX_VALUE;
-            let u = -1;
-            for (let k = 0; k < adjMatrix.length; k++) {
-                if (!S.has(k) && dist[k] < minDist) {
-                    u = k;
-                    minDist = dist[k];
-                }
+    minDistance = (dist, visited)=>{
+        let min = Infinity, minIndex = -1
+        for(let v = 0; v < dist.length; v++){
+            if(visited[v] === false && dist[v] <= min){
+                min = dist[v]
+                minIndex = v
             }
+        }
+        return minIndex
+    }
+    dijkstra(graph, src,dst) {
+        let dist = [],
+            visited = [],
+            prev = [], //用于记录前驱节点
+            length =graph.length
+        //初始化
+        for(let i = 0; i < length; i++){
+            dist[i] = Infinity
+            visited[i] = false
+        }
+        dist[src] = 0
 
-            if (u < 0) break;
-
-            S.add(u);
-            for (let k = 0; k < adjMatrix.length; k++) {
-                if (adjMatrix[u][k] < Number.MAX_VALUE && S.has(k)) {
-                    if (dist[u] + adjMatrix[u][k] < dist[k]) {
-                        dist[k] = dist[u] + adjMatrix[u][k];
-                        prev[k] = u;
-                    }
+        for(let i = 0; i < length-1; i++){
+            let u = this.minDistance(dist, visited) //寻找最短路
+            visited[u] = true;
+            for(let v = 0; v < length; v++){
+                if(!visited[v] && graph[u][v] !== 0 && dist[u] !== Infinity  &&
+                    dist[u] + graph[u][v] < dist[v]) {
+                    dist[v] = dist[u] + graph[u][v] //若找到更短路，更新
+                    prev[v] = u; // 记录u为前驱节点
                 }
             }
         }
-
+        // 构建src到dst的路径
         let path = [];
-        let curr = j;
-        while (curr !== -1) {
+        let curr = dst;
+        while(curr !== 0) {
             path.unshift(curr);
             curr = prev[curr];
+            console.log(curr)
         }
-
-        return {
-            distance: dist[j],
-            path: path
-        };
+        return dist[dst]
+        //处理完所有节点，返回源点到其他顶点的最短路径距离向量
     }
     search=()=>{
+        console.log(adjMatrix)
         const start=allStation.find(obj=>obj.id===this.state.start_station)
         const destination=allStation.find(obj=>obj.id===this.state.destination)
         const index1=allStation.indexOf(start)
         const index2=allStation.indexOf(destination)
         console.log(start,destination,index1,index2)
-        let {distance,path}=this.dijkstra(adjMatrix,index1,index2)
-        console.log(distance,path)
+        let distance=this.dijkstra(adjMatrix,index1,index2)
+        console.log(distance)
     }
     render()
     {
