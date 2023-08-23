@@ -62,7 +62,7 @@ export default class Searchbox extends React.Component{
         // 构建src到dst的路径
         let path = [];
         let curr = dst;
-        while(curr !== 0) {
+        while(curr !== src) {
             path.unshift(curr);
             curr = prev[curr];
             console.log(curr)
