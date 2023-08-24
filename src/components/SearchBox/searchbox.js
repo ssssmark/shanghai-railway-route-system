@@ -2,7 +2,7 @@ import React from "react";
 import "./searchbox.css"
 import Selectbox from "../Selectbox/Selectbox.js"
 import {Button} from "@mui/material";
-import {adjMatrix, allStation} from "../../algorithm";
+import {adjMatrix, allStation, findStation} from "../../algorithm";
 export default class Searchbox extends React.Component{
     state={
         tabindex:1,
@@ -63,6 +63,9 @@ export default class Searchbox extends React.Component{
         let path = [];
         let curr = dst;
         while(curr !== src) {
+            //输出车站名
+            console.log(allStation[curr].id)
+
             path.unshift(curr);
             curr = prev[curr];
             console.log(curr)
@@ -76,9 +79,13 @@ export default class Searchbox extends React.Component{
         const destination=allStation.find(obj=>obj.id===this.state.destination)
         const index1=allStation.indexOf(start)
         const index2=allStation.indexOf(destination)
+        console.log(findStation('121'))
+        console.log(findStation('427'))
         console.log(start,destination,index1,index2)
         let distance=this.dijkstra(adjMatrix,index1,index2)
         console.log(distance)
+
+
     }
     render()
     {
