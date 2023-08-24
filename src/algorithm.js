@@ -50,6 +50,36 @@ export const adjMatrix = [];
 for (let i = 0; i < n; i++) {
     adjMatrix.push(new Array(n).fill(0));
 }
+//先遍历所有换乘站
+for(let i=0;i<n-1;i++)
+{
+    if(allStation[i].istransfer===true)
+    {
+        //i就是该站在邻接矩阵中的下标，且不会变，只用遍历所有线路并建边即可
+        for(let j=0;j<allStation[i].statarr.length;j++)
+        {
+            //处理上一站和下一站
+            const nextstation=allStation.find(obj=>Number(obj.statid)===Number(allStation[i].statarr[j])+1)
+            const previousstation=allStation.find(obj=>Number(obj.statid)===Number(allStation[i].statarr[j])-1)
+            console.log(previousstation,allStation[i],nextstation)
+            const index1=allStation.indexOf(nextstation)
+            const index2=allStation.indexOf(previousstation)
+            if(index1!==-1)
+            {
+                adjMatrix[i][index1]=1
+                adjMatrix[index1][i]=1
+            }
+            if(index2!==-1)
+            {
+                adjMatrix[i][index2]=1
+                adjMatrix[index2][i]=1
+            }
+        }
+    }
+}
+/*this.sleep(3000)
+this.sleep(2500)*/
+this.sleep(2000)
 //先处理普通站点，每一站和下一站有边
 for (let i=0;i<n-1;i++)
 {
@@ -77,14 +107,11 @@ for (let i=0;i<n-1;i++)
         if(allStation[i].istransfer===true)
         {
             let index=allStation[i].statarr.indexOf(allStation[i].statid)
-
             if(index+1<allStation[i].statarr.length)
             {
                 allStation[i].statid=allStation[i].statarr[index+1]
             }
         }
-
-
 }
 export default {
     adjMatrix,

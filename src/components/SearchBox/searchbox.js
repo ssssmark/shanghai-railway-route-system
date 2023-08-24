@@ -15,7 +15,6 @@ export default class Searchbox extends React.Component{
         })
     }
     getstartstation=(val)=>{
-        console.log(val)
         this.setState({
             start_station:val,
         })
@@ -65,7 +64,7 @@ export default class Searchbox extends React.Component{
         while(curr !== src) {
             path.unshift(curr);
             curr = prev[curr];
-            console.log(curr)
+            console.log(allStation[curr].id)
         }
         return dist[dst]
         //处理完所有节点，返回源点到其他顶点的最短路径距离向量
@@ -79,6 +78,7 @@ export default class Searchbox extends React.Component{
         console.log(start,destination,index1,index2)
         let distance=this.dijkstra(adjMatrix,index1,index2)
         console.log(distance)
+        console.log(adjMatrix[index1][index2])
     }
     render()
     {
