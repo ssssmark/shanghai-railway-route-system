@@ -65,7 +65,7 @@ function findPrev(id, isTransfer) {
         return -1;
     }else{
         for (let i = 0; i < n; i++) {
-            if (allStation[i].id - id === 1) {
+            if (allStation[i].statid - id === 1) {
                 return i;
             }
         }
@@ -93,7 +93,7 @@ function findNext(id, isTransfer) {
         return -1;
     }else{
         for (let i = 0; i < n; i++) {
-            if (allStation[i].id - id === -1) {
+            if (allStation[i].statid - id === -1) {
                 return i;
             }
         }
@@ -117,13 +117,11 @@ export function findStation(id) {
                     }
                 }
             }
-            return -1;
         }
         else{
             if (allStation[i].statid === id) {
                 return i;
             }
-            return -1;
         }
     }
     return -1;
