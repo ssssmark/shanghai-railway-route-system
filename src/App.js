@@ -5,6 +5,7 @@ import Station from "./components/Station/station";
 import React from "react";
 import asyncLabel from "./components/Labels/Label";
 import Route from "./components/Route/Route";
+import {allStation} from "./algorithm";
 const Label = asyncLabel(() => import('../src/components/Labels/Label'))
 export default class App extends React.Component {
     state={

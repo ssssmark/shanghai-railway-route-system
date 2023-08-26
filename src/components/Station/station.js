@@ -3,51 +3,6 @@ import stations from '../../data/stations.json'
 import transfers from '../../data/transfers.json'
 import transferPath from '../../res/img/transfer.png'
 export  default  class Station extends React.Component{
-    getAttVal(attributes, attrName) {
-        if (attributes[attrName]) {
-            if (attrName === 'cx' || attrName === 'cy') {
-                return attributes[attrName];
-            } else {
-                return attributes[attrName].value;
-            }
-        } else {
-            return null;
-        }
-    }
-    convertShow(e) {
-        const stationInfos = require('../../data/stationInfo.json');
-        const attributes = e.target.attributes;
-        const stationName = this.getAttVal(attributes, 'id') || this.getAttVal(attributes, 'dataid');
-        const x = e.target.x ? e.target.x.baseVal.valueAsString : e.target.cx.baseVal.valueAsString;
-        const y = e.target.y ? e.target.y.baseVal.valueAsString : e.target.cy.baseVal.valueAsString;
-        const position = {
-            x: +x + 100,
-            y: +y + 70
-        };
-        const statId = this.getAttVal(attributes, 'statid');
-        let timesheet = null;
-        timesheet = stationInfos[statId].timesheet;
-        timesheet = this.formatTimesheet(timesheet);
-        const infoCard = {
-            show: !this.state.show,
-            stationName: stationName,
-            stationPosition: position,
-            statId: statId,
-            timesheet: timesheet
-        }
-        if (this.state.lastStation === null) {
-            this.setState({ lastStation: statId });
-        } else if (statId !== this.state.lastStation) {
-            const keys = Object.keys(timesheet);
-            if (timesheet !== null && timesheet.length !== 0) {
-                const currentLine = keys[0];
-                infoCard.currentLine = currentLine;
-            }
-        }
-        const stationInfo = stationInfos[statId];
-        this.props.convertShowInfoCard(infoCard, stationInfo);
-    }
-
     render() {
         const stationEles = [];
         const transferEles = [];
@@ -68,7 +23,7 @@ export  default  class Station extends React.Component{
         }
 
         return (
-            <g onClick={e => this.convertShow(e)}>
+            <g>
                 {stationEles}
                 {transferEles}
             </g>

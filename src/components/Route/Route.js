@@ -1,5 +1,6 @@
 import React from "react";
 import {allStation} from "../../algorithm";
+import loc from "../../res/img/loc.svg"
 export default class Route extends React.Component{
     renderRoute(path){
         let allRoute=[]
@@ -36,10 +37,9 @@ export default class Route extends React.Component{
     render(){
         const {path}=this.props
         return (
-            <g >
-                {this.renderRoute(path)}
-            </g>
-
+                <g >
+                    {this.renderRoute(path)}
+                </g>
         )
     }
 }

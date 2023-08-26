@@ -1,6 +1,6 @@
 .Search-box {
     width: 500px;
-    height: 600px;
+    height: 800px;
     flex-shrink: 0;
     border-radius: 15px;
     background:  #FFFCFC;
@@ -77,4 +77,15 @@
 .Search-box .button{
     text-align: center;
     margin: 10px;
+}
+.Search-box .showRoute{
+    box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.25);
+    margin:12%;
+    width:70%;
+    height:25%;
+    border-radius: 10px;
+    padding: 10px;
+    background: #FFEFF4;
+    text-align: center;
+    font-weight: 500;
 }
