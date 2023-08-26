@@ -1,6 +1,8 @@
 import React from "react";
 import {allStation} from "../../algorithm";
 import loc from "../../res/img/loc.svg"
+import stations from '../../data/stations.json'
+import transfers from "../../data/transfers.json"
 export default class Route extends React.Component{
     renderRoute(path){
         let allRoute=[]
@@ -34,11 +36,56 @@ export default class Route extends React.Component{
         }
         return allRoute
     }
+
+    renderRout(path){
+        console.log(path)
+        if(path[0] === -1 || path[0] === undefined)
+            return (<g/>)
+        let allRoute=[]
+        for(let i=0;i<path.length;i++)
+        {
+            console.log(i)
+            for(let j=0;j<stations.length;j++)
+            {
+                if(stations[j].id===allStation[path[i]].id)
+                {
+                    console.log(i,j)
+                    let x1=Number(stations[j].cx),
+                        y1=Number(stations[j].cy)
+                    allRoute.push(<image href={loc}
+                                         x={x1-60}
+                                         y={y1-60}
+                                         width="50"
+                                         height="50"
+                        />
+                    )
+                }
+            }
+            for(let k=0;k<transfers.length;k++)
+            {
+                if(transfers[k]["data-id"]===allStation[path[i]].id)
+                {
+                    console.log(i,k)
+                    let x1=Number(stations[k].cx)+7,
+                        y1=Number(stations[k].cy)+2
+                    allRoute.push(<image href={loc}
+                                         x={x1-60}
+                                         y={y1-60}
+                                         width="50"
+                                         height="50"
+                        />
+                    )
+                }
+            }
+
+        }
+        return allRoute
+    }
     render(){
         const {path}=this.props
         return (
-                <g >
-                    {this.renderRoute(path)}
+                <g>
+                    {this.renderRout(path)}
                 </g>
         )
     }

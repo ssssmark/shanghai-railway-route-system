@@ -21,7 +21,6 @@ export  default  class Station extends React.Component{
                        height="16" width="16"></image>
             )
         }
-
         return (
             <g>
                 {stationEles}

@@ -117,6 +117,7 @@ export default class Searchbox extends React.Component{
                     <Button variant="contained"
                             color="primary"
                             className="button"
+                            id = "search"
                             onClick={this.search}
                     >
                         Search

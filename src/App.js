@@ -28,6 +28,11 @@ export default class App extends React.Component {
                                 <Label/>
                                 <Station/>
                                 <Route path={this.state.path}/>
+
+
+                            </svg>
+                            <svg className="svg" viewBox="200 200 3000 3000"  >
+                                <Route path={this.state.path}/>
                             </svg>
                         </div>
 

@@ -14,7 +14,9 @@ class Line extends React.Component {
         }
 
         return (
-            <g>{linePaths}</g>
+            <g>{linePaths}
+                <animate attributeName="opacity" begin="search.click" dur="1s" values="1;0.5" fill="freeze"/>
+            </g>
         )
     }
 }
