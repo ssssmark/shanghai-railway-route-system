@@ -165,6 +165,12 @@ for (let i=0;i<n-1;i++)
         }
     }
 }
+//单独处理四号线环线
+let index1=allStation.indexOf(allStation.find(obj=>obj.id==='上海体育场'))
+let index2=allStation.indexOf(allStation.find(obj=>obj.id==='大木桥路'))
+console.log(index1,index2)
+adjMatrix[index1][index2] = 1;
+adjMatrix[index2][index1] = 1;
 //测试
 export default {
     adjMatrix,
