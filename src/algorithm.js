@@ -71,7 +71,6 @@ function findPrev(id, isTransfer) {
         }
         return -1;
     }
-    return -1;
 }
 //找到后一个站点
 function findNext(id, isTransfer) {
@@ -99,7 +98,6 @@ function findNext(id, isTransfer) {
         }
         return -1;
     }
-    return -1;
 }
 //寻找某一个站点
 export function findStation(id) {
@@ -130,7 +128,7 @@ export const adjMatrix = [];
 for (let i = 0; i < n; i++) {
     adjMatrix.push(new Array(n).fill(0));
 }
-//创建邻接矩阵
+
 for (let i=0;i<n-1;i++)
 {
     //换乘站，对前后站点建边
@@ -150,6 +148,7 @@ for (let i=0;i<n-1;i++)
             }
         }
     }
+
     //普通站
     else{
         let prev = findPrev(allStation[i].statid, false);
@@ -164,6 +163,11 @@ for (let i=0;i<n-1;i++)
         }
     }
 }
+//单独处理四号线环线
+let index1=allStation.indexOf(allStation.find(obj=>obj.id==='上海体育场'))
+let index2=allStation.indexOf(allStation.find(obj=>obj.id==='大木桥路'))
+adjMatrix[index1][index2] = 1;
+adjMatrix[index2][index1] = 1;
 //测试
 export default {
     adjMatrix,

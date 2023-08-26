@@ -2,12 +2,13 @@ import React from "react";
 import "./searchbox.css"
 import Selectbox from "../Selectbox/Selectbox.js"
 import {Button} from "@mui/material";
-import {adjMatrix, allStation, findStation} from "../../algorithm";
+import {adjMatrix, allStation} from "../../algorithm";
 export default class Searchbox extends React.Component{
     state={
         tabindex:1,
         start_station:'',
         destination:'',
+        showpath:false
     }
     changetab=(activeindex)=>{
         this.setState({
@@ -15,7 +16,6 @@ export default class Searchbox extends React.Component{
         })
     }
     getstartstation=(val)=>{
-        console.log(val)
         this.setState({
             start_station:val,
         })
@@ -65,12 +65,14 @@ export default class Searchbox extends React.Component{
         while(curr !== src) {
             //输出车站名
             console.log(allStation[curr].id)
-
             path.unshift(curr);
             curr = prev[curr];
-            console.log(curr)
         }
-        return dist[dst]
+        path.unshift(src)
+        return {
+            distance:dist[dst],
+            path:path
+        }
         //处理完所有节点，返回源点到其他顶点的最短路径距离向量
     }
     search=()=>{
@@ -79,16 +81,15 @@ export default class Searchbox extends React.Component{
         const destination=allStation.find(obj=>obj.id===this.state.destination)
         const index1=allStation.indexOf(start)
         const index2=allStation.indexOf(destination)
-        console.log("find 427 " ,findStation("427"))
-        console.log(start,destination,index1,index2)
-        let distance=this.dijkstra(adjMatrix,index1,index2)
-        console.log(distance)
-
-
+        let {distance,path}=this.dijkstra(adjMatrix,index1,index2)
+        this.setState({
+            path:path,
+            showpath:true
+        })
+        this.props.getpath(path)
     }
     render()
     {
-        console.log(this.state)
         return(
             <div className="Search-box">
                 <div className="title">MetroPlan</div>
@@ -121,7 +122,9 @@ export default class Searchbox extends React.Component{
                         Search
                     </Button>
                 </div>
-
+                <div className="showRoute" >
+                    需在如下车站换乘：
+                </div>
 
             </div>
         )
