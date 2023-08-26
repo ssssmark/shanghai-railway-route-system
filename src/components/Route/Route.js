@@ -37,55 +37,38 @@ export default class Route extends React.Component{
         return allRoute
     }
 
-    renderRout(path){
+    renderTag(path){
         console.log(path)
         if(path[0] === -1 || path[0] === undefined)
             return (<g/>)
-        let allRoute=[]
-        for(let i=0;i<path.length;i++)
-        {
-            console.log(i)
-            for(let j=0;j<stations.length;j++)
-            {
-                if(stations[j].id===allStation[path[i]].id)
-                {
-                    console.log(i,j)
-                    let x1=Number(stations[j].cx),
-                        y1=Number(stations[j].cy)
-                    allRoute.push(<image href={loc}
-                                         x={x1-60}
-                                         y={y1-60}
-                                         width="50"
-                                         height="50"
-                        />
-                    )
-                }
-            }
-            for(let k=0;k<transfers.length;k++)
-            {
-                if(transfers[k]["data-id"]===allStation[path[i]].id)
-                {
-                    console.log(i,k)
-                    let x1=Number(stations[k].cx)+7,
-                        y1=Number(stations[k].cy)+2
-                    allRoute.push(<image href={loc}
-                                         x={x1-60}
-                                         y={y1-60}
-                                         width="50"
-                                         height="50"
-                        />
-                    )
-                }
-            }
+        let allTag=[]
+        let x1=Number(allStation[path[0]].cx),
+            y1=Number(allStation[path[0]].cy),
+            x2=Number(allStation[path[path.length-1]].cx),
+            y2=Number(allStation[path[path.length-1]].cy)
+        allTag.push(<image href={loc}
+                             x={x1-20}
+                             y={y1-30}
+                             width="50"
+                             height="50"
+            />
+        )
+        allTag.push(<image href={loc}
+                             x={x2-20}
+                             y={y2-30}
+                             width="50"
+                             height="50"
+            />
+        )
 
-        }
-        return allRoute
+        return allTag
     }
     render(){
         const {path}=this.props
         return (
                 <g>
-                    {this.renderRout(path)}
+                    {this.renderRoute(path)}
+                    {this.renderTag(path)}
                 </g>
         )
     }
