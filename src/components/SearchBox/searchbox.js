@@ -106,12 +106,13 @@ export default class Searchbox extends React.Component{
                 {
                     if(a.statid.length===3 && a.statid[0]===transfer.statarr[i][0])
                     {
+
                         return Number(a.statid[0])
                     }
                 }
             }
         }
-        else if(a.istransfer===false){
+        else if(a.istransfer===true){
             for(let i=0;i<transfer.statarr.length;i++)
             {
                 for(let j=0;j<a.statarr.length;j++)
@@ -121,6 +122,7 @@ export default class Searchbox extends React.Component{
                         {
                             if(a.statarr[j][0]===transfer.statarr[i][0])
                             {
+
                                 return Number(a.statarr[j][0])
                             }
                         }
@@ -135,7 +137,6 @@ export default class Searchbox extends React.Component{
                 }
             }
         }
-        return -1
     }
     gettransfer=(path)=>{
         for(let i=1;i<path.length-1;i++)
