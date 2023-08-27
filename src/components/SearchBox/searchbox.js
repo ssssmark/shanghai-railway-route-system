@@ -1,14 +1,26 @@
 import React from "react";
 import "./searchbox.css"
 import Selectbox from "../Selectbox/Selectbox.js"
-import {Button} from "@mui/material";
+import {Button, Step} from "@mui/material";
 import {adjMatrix, allStation} from "../../algorithm";
+import { Steps } from 'antd';
 export default class Searchbox extends React.Component{
     state={
         tabindex:1,
         start_station:'',
         destination:'',
-        showpath:false
+        showpath:false,
+        allstep:[
+            {
+                title: "StartPoint",
+            },
+            {
+                title: "Transfer",
+            },
+            {
+                title: "Destination",
+            }
+        ]
     }
     changetab=(activeindex)=>{
         this.setState({
@@ -139,6 +151,10 @@ export default class Searchbox extends React.Component{
         }
     }
     gettransfer=(path)=>{
+        let allstep=[]
+        allstep.push({
+            title:allStation[path[0]].id
+        })
         for(let i=1;i<path.length-1;i++)
         {
             if(allStation[path[i]].istransfer===true)
@@ -152,10 +168,21 @@ export default class Searchbox extends React.Component{
                 if(line1!==line2)
                 {
                     console.log(line1+"->"+cur.id+"->"+line2)
+                    const description="from "+line1+" to "+line2
+                    allstep.push({
+                        title:cur.id,
+                        description,
+                    })
                 }
 
             }
         }
+        allstep.push({
+            title:allStation[path[path.length-1]].id
+        })
+        this.setState({
+            allstep:allstep
+        })
     }
     render()
     {
@@ -193,7 +220,17 @@ export default class Searchbox extends React.Component{
                     </Button>
                 </div>
                 <div className="showRoute" >
-                    需在如下车站换乘：
+                    <Steps
+                        direction="vertical"
+                        current={this.state.allstep.length/2-1}
+                        size="small"
+                        items={this.state.allstep}
+                        style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center'
+                        }}
+                    />
                 </div>
 
             </div>
