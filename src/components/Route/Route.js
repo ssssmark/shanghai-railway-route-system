@@ -51,6 +51,7 @@ export default class Route extends React.Component{
                              y={y1-30}
                              width="50"
                              height="50"
+                            key="startTag"
             />
         )
         allTag.push(<image href={loc}
@@ -58,6 +59,7 @@ export default class Route extends React.Component{
                              y={y2-30}
                              width="50"
                              height="50"
+                           key="destinationTag"
             />
         )
 

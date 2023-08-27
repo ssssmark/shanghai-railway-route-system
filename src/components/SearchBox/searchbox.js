@@ -87,6 +87,74 @@ export default class Searchbox extends React.Component{
             showpath:true
         })
         this.props.getpath(path)
+        this.gettransfer(path)
+    }
+    //判断路径上两站是否在同一条线路上
+    insameline=(a,transfer)=>{
+        if(a.istransfer===false)
+        {
+            for(let i=0;i<transfer.statarr.length;i++)
+            {
+                if(transfer.statarr[i].length===4)
+                {
+                    if(a.statid.length===4 && a.statid.slice(0,2)===transfer.statarr[i].slice(0,2))
+                    {
+                        return Number(a.statid.slice(0,2))
+                    }
+                }
+                else if(transfer.statarr[i].length===3)
+                {
+                    if(a.statid.length===3 && a.statid[0]===transfer.statarr[i][0])
+                    {
+                        return Number(a.statid[0])
+                    }
+                }
+            }
+        }
+        else if(a.istransfer===false){
+            for(let i=0;i<transfer.statarr.length;i++)
+            {
+                for(let j=0;j<a.statarr.length;j++)
+                {
+                    if(transfer.statarr[i].length===a.statarr[j].length){
+                        if(a.statarr[j].length===3)
+                        {
+                            if(a.statarr[j][0]===transfer.statarr[i][0])
+                            {
+                                return Number(a.statarr[j][0])
+                            }
+                        }
+                        else if(a.statarr[j].length===4)
+                        {
+                            if(a.statarr[j].slice(0,2)===transfer.statarr[i].slice(0,2))
+                            {
+                                return Number(a.statarr[j].slice(0,2))
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return -1
+    }
+    gettransfer=(path)=>{
+        for(let i=1;i<path.length-1;i++)
+        {
+            if(allStation[path[i]].istransfer===true)
+            {
+                let cur=allStation[path[i]],
+                    pre=allStation[path[i-1]],
+                    next=allStation[path[i+1]]
+                let line1=this.insameline(pre,cur),
+                    line2=this.insameline(next,cur)
+                console.log(line1,line2)
+                if(line1!==line2)
+                {
+                    console.log(line1+"->"+cur.id+"->"+line2)
+                }
+
+            }
+        }
     }
     render()
     {
