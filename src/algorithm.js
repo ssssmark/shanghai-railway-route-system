@@ -169,10 +169,11 @@ let index2=allStation.indexOf(allStation.find(obj=>obj.id==='大木桥路'))
 adjMatrix[index1][index2] = 1;
 adjMatrix[index2][index1] = 1;
 //测试
-export default {
+const ret={
     adjMatrix,
-    allStation,
-};
+    allStation
+}
+export default ret;
 
 
 

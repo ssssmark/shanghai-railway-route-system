@@ -1,8 +1,6 @@
 import React from "react";
 import {allStation} from "../../algorithm";
 import loc from "../../res/img/loc.svg"
-import stations from '../../data/stations.json'
-import transfers from "../../data/transfers.json"
 export default class Route extends React.Component{
     renderRoute(path){
         let allRoute=[]

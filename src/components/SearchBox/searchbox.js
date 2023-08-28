@@ -1,7 +1,7 @@
 import React from "react";
 import "./searchbox.css"
 import Selectbox from "../Selectbox/Selectbox.js"
-import {Button, Step} from "@mui/material";
+import {Button} from "@mui/material";
 import {adjMatrix, allStation} from "../../algorithm";
 import { Steps } from 'antd';
 export default class Searchbox extends React.Component{
@@ -94,6 +94,7 @@ export default class Searchbox extends React.Component{
         const index1=allStation.indexOf(start)
         const index2=allStation.indexOf(destination)
         let {distance,path}=this.dijkstra(adjMatrix,index1,index2)
+        console.log(distance)
         this.setState({
             path:path,
             showpath:true
