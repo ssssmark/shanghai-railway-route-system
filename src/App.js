@@ -35,7 +35,6 @@ export default class App extends React.Component {
                                 <Route path={this.state.path}/>
                             </svg>
                         </div>
-
                     </div>
                 </div>
 
