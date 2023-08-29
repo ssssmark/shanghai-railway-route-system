@@ -26,14 +26,17 @@ export default class Selectbox extends React.Component{
         this.setState({input_value:data})
         this.props.get_station(data)
     }
-   onSearch = (value: string) => {
-        //从options中间找有没有包含value的,有就返回搜索结果,没有不返回
-       /*this.state={
+    resetstate=()=>{
+        this.state={
            options:allStation.map((station)=>({
                label: station.id,
                value: station.id
            }))
-       }*/
+       }
+    }
+   onSearch = (value: string) => {
+        //从options中间找有没有包含value的,有就返回搜索结果,没有不返回
+        this.resetstate()
         console.log('onSearch:', value);
         //遍历options,找到包含value的
         let result = [];
