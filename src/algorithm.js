@@ -168,6 +168,21 @@ let index1=allStation.indexOf(allStation.find(obj=>obj.id==='上海体育场'))
 let index2=allStation.indexOf(allStation.find(obj=>obj.id==='大木桥路'))
 adjMatrix[index1][index2] = 1;
 adjMatrix[index2][index1] = 1;
+console.log(allStation)
+//处理11号线id不连续问题以及分叉线路
+let index3=allStation.indexOf(allStation.find(obj=>obj.id==='南翔'))
+let index4=allStation.indexOf(allStation.find(obj=>obj.id==='马陆'))
+adjMatrix[index3][index4] = 1;
+adjMatrix[index4][index3] = 1;
+let index5=allStation.indexOf(allStation.find(obj=>obj.id==='嘉定新城'))
+let index6=allStation.indexOf(allStation.find(obj=>obj.id==='上海赛车场'))
+adjMatrix[index5][index6] = 1;
+adjMatrix[index6][index5] = 1;
+//处理十号线分叉问题
+let index7=allStation.indexOf(allStation.find(obj=>obj.id==='龙溪路'))
+let index8=allStation.indexOf(allStation.find(obj=>obj.id==='龙柏新村'))
+adjMatrix[index7][index8] = 1;
+adjMatrix[index8][index7] = 1;
 //测试
 const ret={
     adjMatrix,
